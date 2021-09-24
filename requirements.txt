@@ -1,0 +1,12 @@
+allure-pytest==2.9.43
+allure-python-commons==2.9.43
+Faker==8.12.1
+pytest==6.2.4
+requests==2.26.0
+tox==3.24.4
+black==21.9b0
+flake8==3.9.2
+vulture==2.3
+mypy==0.910
+attrs~=21.2.0
+cattrs==1.8.0
