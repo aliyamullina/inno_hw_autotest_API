@@ -1,8 +1,9 @@
 import logging
 import pytest
 from fixtures.app import App
-from fixtures.auth.model import AuthUserResponse, AuthUserType
+from fixtures.auth.model import AuthUserResponse, UserType
 from fixtures.register.model import RegisterNewUser, RegisterNewUserResponse
+from fixtures.user_info.model import UserInfo
 
 logger = logging.getLogger("API")
 
@@ -34,4 +35,14 @@ def auth_user(app):
     token = response_auth.data.access_token
     header = {"Authorization": f"JWT {token}"}
     user_uuid = response_register.data.uuid
-    return AuthUserType(header, user_uuid)
+    return UserType(header, user_uuid)
+
+
+@pytest.fixture
+def user_info(app, auth_user):
+    data = UserInfo.random()
+    app.user_info.add_user_info(
+        user_id=auth_user.uuid, data=data, header=auth_user.header
+    )
+    auth_user.user_data = data
+    return UserType(header=auth_user.header, uuid=auth_user.uuid, user_data=data)

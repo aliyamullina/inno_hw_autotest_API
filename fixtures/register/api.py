@@ -1,7 +1,7 @@
 from requests import Response
 from fixtures.register.model import RegisterNewUser
 from fixtures.validation import Validation
-from common.deco import logging as log
+from common.logger import logging as log
 
 
 class Register(Validation):

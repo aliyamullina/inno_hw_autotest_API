@@ -29,6 +29,38 @@ class UserInfo(Base):
 
 
 @attr.s
-class RegisterUserResponse:
+class AddUserResponse:
     message: str = attr.ib()
     uuid: int = attr.ib()
+
+
+@attr.s
+class UpdateUserInfo(Base):
+    phone: str = attr.ib(default=None)
+    email: str = attr.ib(default=None)
+    address: Address = attr.ib(default=None)
+
+    @staticmethod
+    def random():
+        address = Address(
+            city=fake.city(),
+            street=fake.street_name(),
+            home_number=fake.building_number(),
+        )
+        return UpdateUserInfo(
+            phone=fake.phone_number(), email=fake.email(), address=address
+        )
+
+
+@attr.s
+class UpdateUserInfoResponse:
+    message: str = attr.ib()
+
+
+# @attr.s
+# class GetUserInfoResponse:
+#     phone: str = attr.ib(default=None)
+#     email: str = attr.ib(default=None)
+#     userID: int = attr.ib(default=None)
+#     street: str = attr.ib(default=None)
+#     city: str = attr.ib(default=None)
