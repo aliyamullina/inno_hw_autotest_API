@@ -9,7 +9,7 @@ logger = logging.getLogger("api")
 
 def logging(message):
     """
-    Request Logging
+    Логирование
     :return: response
     """
 
@@ -23,7 +23,7 @@ def logging(message):
             body = response.request.body
             status = response.status_code
             body_sep = " "
-            log_request = f"Request method: {method}, url: {url}"
+            log_request = f"Метод запроса (Request): {method}, url: {url}"
             if body is not None:
                 try:
                     json_body = json.dumps(
@@ -38,7 +38,9 @@ def logging(message):
                     log_request += f", body:{body}"
             logger.info(log_request)
 
-            log_response = f"Response method: {method}, url: {url}, status: {status}"
+            log_response = (
+                f"Метод ответа (Response): {method}, url: {url}, статус: {status}"
+            )
             try:
                 body = response.json()
                 if len(response.content) > 20:
