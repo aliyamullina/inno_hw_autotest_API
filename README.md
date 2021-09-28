@@ -36,13 +36,16 @@ tests/user_info/test_add_user_info.py
 ```
 tests/user_info/test_update_user_info.py
 ```
+
 # Установка
 ### Отчеты Allure
 [docs.qameta.io/allure/#_get_started](https://docs.qameta.io/allure/#_get_started)
+
 ### Зависимости
 ```
 pip install -r requirements.txt
 ```
+
 ### Запуск тестов из терминала
 ```
 tox
